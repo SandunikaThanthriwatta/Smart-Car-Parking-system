@@ -1,0 +1,637 @@
+
+test 6 LCD.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000048  00800100  00000450  000004c4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000450  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  0000050c  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000053c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000098  00000000  00000000  0000057c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000c5e  00000000  00000000  00000614  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000783  00000000  00000000  00001272  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000697  00000000  00000000  000019f5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000140  00000000  00000000  0000208c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000548  00000000  00000000  000021cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000214  00000000  00000000  00002714  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000088  00000000  00000000  00002928  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e0 e5       	ldi	r30, 0x50	; 80
+  7c:	f4 e0       	ldi	r31, 0x04	; 4
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a8 34       	cpi	r26, 0x48	; 72
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 9a 01 	call	0x334	; 0x334 <main>
+  8e:	0c 94 26 02 	jmp	0x44c	; 0x44c <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <_Z8i2c_initv>:
+}
+
+void lcd_lef_sh()
+{
+	lcd_cmd(0x18);      //----Command for Left Shift
+	delay(200);
+  96:	82 e6       	ldi	r24, 0x62	; 98
+  98:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__DATA_REGION_ORIGIN__+0x58>
+  9c:	84 e0       	ldi	r24, 0x04	; 4
+  9e:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+  a2:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__DATA_REGION_ORIGIN__+0x59>
+  a6:	08 95       	ret
+
+000000a8 <_Z9i2c_startv>:
+  a8:	84 ea       	ldi	r24, 0xA4	; 164
+  aa:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+  ae:	ec eb       	ldi	r30, 0xBC	; 188
+  b0:	f0 e0       	ldi	r31, 0x00	; 0
+  b2:	80 81       	ld	r24, Z
+  b4:	88 23       	and	r24, r24
+  b6:	ec f7       	brge	.-6      	; 0xb2 <_Z9i2c_startv+0xa>
+  b8:	08 95       	ret
+
+000000ba <_Z9i2c_writec>:
+  ba:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__DATA_REGION_ORIGIN__+0x5b>
+  be:	84 e8       	ldi	r24, 0x84	; 132
+  c0:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+  c4:	ec eb       	ldi	r30, 0xBC	; 188
+  c6:	f0 e0       	ldi	r31, 0x00	; 0
+  c8:	80 81       	ld	r24, Z
+  ca:	88 23       	and	r24, r24
+  cc:	ec f7       	brge	.-6      	; 0xc8 <_Z9i2c_writec+0xe>
+  ce:	08 95       	ret
+
+000000d0 <_Z5delayi>:
+  d0:	99 23       	and	r25, r25
+  d2:	64 f0       	brlt	.+24     	; 0xec <_Z5delayi+0x1c>
+  d4:	40 e0       	ldi	r20, 0x00	; 0
+  d6:	50 e0       	ldi	r21, 0x00	; 0
+  d8:	29 e7       	ldi	r18, 0x79	; 121
+  da:	30 e0       	ldi	r19, 0x00	; 0
+  dc:	21 50       	subi	r18, 0x01	; 1
+  de:	31 09       	sbc	r19, r1
+  e0:	e9 f7       	brne	.-6      	; 0xdc <_Z5delayi+0xc>
+  e2:	4f 5f       	subi	r20, 0xFF	; 255
+  e4:	5f 4f       	sbci	r21, 0xFF	; 255
+  e6:	84 17       	cp	r24, r20
+  e8:	95 07       	cpc	r25, r21
+  ea:	b4 f7       	brge	.-20     	; 0xd8 <_Z5delayi+0x8>
+  ec:	08 95       	ret
+
+000000ee <_Z6togglev>:
+  ee:	eb eb       	ldi	r30, 0xBB	; 187
+  f0:	f0 e0       	ldi	r31, 0x00	; 0
+  f2:	80 81       	ld	r24, Z
+  f4:	82 60       	ori	r24, 0x02	; 2
+  f6:	80 83       	st	Z, r24
+  f8:	84 e8       	ldi	r24, 0x84	; 132
+  fa:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+  fe:	ec eb       	ldi	r30, 0xBC	; 188
+ 100:	f0 e0       	ldi	r31, 0x00	; 0
+ 102:	80 81       	ld	r24, Z
+ 104:	88 23       	and	r24, r24
+ 106:	ec f7       	brge	.-6      	; 0x102 <_Z6togglev+0x14>
+ 108:	81 e0       	ldi	r24, 0x01	; 1
+ 10a:	90 e0       	ldi	r25, 0x00	; 0
+ 10c:	0e 94 68 00 	call	0xd0	; 0xd0 <_Z5delayi>
+ 110:	eb eb       	ldi	r30, 0xBB	; 187
+ 112:	f0 e0       	ldi	r31, 0x00	; 0
+ 114:	80 81       	ld	r24, Z
+ 116:	8d 7f       	andi	r24, 0xFD	; 253
+ 118:	80 83       	st	Z, r24
+ 11a:	84 e8       	ldi	r24, 0x84	; 132
+ 11c:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 120:	ec eb       	ldi	r30, 0xBC	; 188
+ 122:	f0 e0       	ldi	r31, 0x00	; 0
+ 124:	80 81       	ld	r24, Z
+ 126:	88 23       	and	r24, r24
+ 128:	ec f7       	brge	.-6      	; 0x124 <_Z6togglev+0x36>
+ 12a:	08 95       	ret
+
+0000012c <_Z10lcd_cmd_hfc>:
+ 12c:	eb eb       	ldi	r30, 0xBB	; 187
+ 12e:	f0 e0       	ldi	r31, 0x00	; 0
+ 130:	90 81       	ld	r25, Z
+ 132:	9e 7f       	andi	r25, 0xFE	; 254
+ 134:	90 83       	st	Z, r25
+ 136:	94 e8       	ldi	r25, 0x84	; 132
+ 138:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 13c:	ec eb       	ldi	r30, 0xBC	; 188
+ 13e:	f0 e0       	ldi	r31, 0x00	; 0
+ 140:	90 81       	ld	r25, Z
+ 142:	99 23       	and	r25, r25
+ 144:	ec f7       	brge	.-6      	; 0x140 <_Z10lcd_cmd_hfc+0x14>
+ 146:	eb eb       	ldi	r30, 0xBB	; 187
+ 148:	f0 e0       	ldi	r31, 0x00	; 0
+ 14a:	90 81       	ld	r25, Z
+ 14c:	9f 70       	andi	r25, 0x0F	; 15
+ 14e:	90 83       	st	Z, r25
+ 150:	94 e8       	ldi	r25, 0x84	; 132
+ 152:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 156:	ec eb       	ldi	r30, 0xBC	; 188
+ 158:	f0 e0       	ldi	r31, 0x00	; 0
+ 15a:	90 81       	ld	r25, Z
+ 15c:	99 23       	and	r25, r25
+ 15e:	ec f7       	brge	.-6      	; 0x15a <_Z10lcd_cmd_hfc+0x2e>
+ 160:	eb eb       	ldi	r30, 0xBB	; 187
+ 162:	f0 e0       	ldi	r31, 0x00	; 0
+ 164:	90 81       	ld	r25, Z
+ 166:	80 7f       	andi	r24, 0xF0	; 240
+ 168:	89 2b       	or	r24, r25
+ 16a:	80 83       	st	Z, r24
+ 16c:	84 e8       	ldi	r24, 0x84	; 132
+ 16e:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 172:	ec eb       	ldi	r30, 0xBC	; 188
+ 174:	f0 e0       	ldi	r31, 0x00	; 0
+ 176:	80 81       	ld	r24, Z
+ 178:	88 23       	and	r24, r24
+ 17a:	ec f7       	brge	.-6      	; 0x176 <_Z10lcd_cmd_hfc+0x4a>
+ 17c:	0e 94 77 00 	call	0xee	; 0xee <_Z6togglev>
+ 180:	08 95       	ret
+
+00000182 <_Z7lcd_cmdc>:
+ 182:	cf 93       	push	r28
+ 184:	c8 2f       	mov	r28, r24
+ 186:	eb eb       	ldi	r30, 0xBB	; 187
+ 188:	f0 e0       	ldi	r31, 0x00	; 0
+ 18a:	80 81       	ld	r24, Z
+ 18c:	8e 7f       	andi	r24, 0xFE	; 254
+ 18e:	80 83       	st	Z, r24
+ 190:	84 e8       	ldi	r24, 0x84	; 132
+ 192:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 196:	ec eb       	ldi	r30, 0xBC	; 188
+ 198:	f0 e0       	ldi	r31, 0x00	; 0
+ 19a:	80 81       	ld	r24, Z
+ 19c:	88 23       	and	r24, r24
+ 19e:	ec f7       	brge	.-6      	; 0x19a <_Z7lcd_cmdc+0x18>
+ 1a0:	eb eb       	ldi	r30, 0xBB	; 187
+ 1a2:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a4:	80 81       	ld	r24, Z
+ 1a6:	8f 70       	andi	r24, 0x0F	; 15
+ 1a8:	80 83       	st	Z, r24
+ 1aa:	84 e8       	ldi	r24, 0x84	; 132
+ 1ac:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 1b0:	ec eb       	ldi	r30, 0xBC	; 188
+ 1b2:	f0 e0       	ldi	r31, 0x00	; 0
+ 1b4:	80 81       	ld	r24, Z
+ 1b6:	88 23       	and	r24, r24
+ 1b8:	ec f7       	brge	.-6      	; 0x1b4 <_Z7lcd_cmdc+0x32>
+ 1ba:	eb eb       	ldi	r30, 0xBB	; 187
+ 1bc:	f0 e0       	ldi	r31, 0x00	; 0
+ 1be:	80 81       	ld	r24, Z
+ 1c0:	9c 2f       	mov	r25, r28
+ 1c2:	90 7f       	andi	r25, 0xF0	; 240
+ 1c4:	89 2b       	or	r24, r25
+ 1c6:	80 83       	st	Z, r24
+ 1c8:	84 e8       	ldi	r24, 0x84	; 132
+ 1ca:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 1ce:	ec eb       	ldi	r30, 0xBC	; 188
+ 1d0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1d2:	80 81       	ld	r24, Z
+ 1d4:	88 23       	and	r24, r24
+ 1d6:	ec f7       	brge	.-6      	; 0x1d2 <_Z7lcd_cmdc+0x50>
+ 1d8:	0e 94 77 00 	call	0xee	; 0xee <_Z6togglev>
+ 1dc:	eb eb       	ldi	r30, 0xBB	; 187
+ 1de:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e0:	80 81       	ld	r24, Z
+ 1e2:	8f 70       	andi	r24, 0x0F	; 15
+ 1e4:	80 83       	st	Z, r24
+ 1e6:	84 e8       	ldi	r24, 0x84	; 132
+ 1e8:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 1ec:	ec eb       	ldi	r30, 0xBC	; 188
+ 1ee:	f0 e0       	ldi	r31, 0x00	; 0
+ 1f0:	80 81       	ld	r24, Z
+ 1f2:	88 23       	and	r24, r24
+ 1f4:	ec f7       	brge	.-6      	; 0x1f0 <_Z7lcd_cmdc+0x6e>
+ 1f6:	eb eb       	ldi	r30, 0xBB	; 187
+ 1f8:	f0 e0       	ldi	r31, 0x00	; 0
+ 1fa:	20 81       	ld	r18, Z
+ 1fc:	30 e1       	ldi	r19, 0x10	; 16
+ 1fe:	c3 9f       	mul	r28, r19
+ 200:	c0 01       	movw	r24, r0
+ 202:	11 24       	eor	r1, r1
+ 204:	82 2b       	or	r24, r18
+ 206:	80 83       	st	Z, r24
+ 208:	84 e8       	ldi	r24, 0x84	; 132
+ 20a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 20e:	ec eb       	ldi	r30, 0xBC	; 188
+ 210:	f0 e0       	ldi	r31, 0x00	; 0
+ 212:	80 81       	ld	r24, Z
+ 214:	88 23       	and	r24, r24
+ 216:	ec f7       	brge	.-6      	; 0x212 <_Z7lcd_cmdc+0x90>
+ 218:	0e 94 77 00 	call	0xee	; 0xee <_Z6togglev>
+ 21c:	cf 91       	pop	r28
+ 21e:	08 95       	ret
+
+00000220 <_Z8lcd_initv>:
+ 220:	80 e3       	ldi	r24, 0x30	; 48
+ 222:	0e 94 96 00 	call	0x12c	; 0x12c <_Z10lcd_cmd_hfc>
+ 226:	80 e3       	ldi	r24, 0x30	; 48
+ 228:	0e 94 96 00 	call	0x12c	; 0x12c <_Z10lcd_cmd_hfc>
+ 22c:	80 e2       	ldi	r24, 0x20	; 32
+ 22e:	0e 94 96 00 	call	0x12c	; 0x12c <_Z10lcd_cmd_hfc>
+ 232:	88 e2       	ldi	r24, 0x28	; 40
+ 234:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+ 238:	8c e0       	ldi	r24, 0x0C	; 12
+ 23a:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+ 23e:	81 e0       	ldi	r24, 0x01	; 1
+ 240:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+ 244:	86 e0       	ldi	r24, 0x06	; 6
+ 246:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+ 24a:	80 e8       	ldi	r24, 0x80	; 128
+ 24c:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+ 250:	08 95       	ret
+
+00000252 <_Z7lcd_dwrc>:
+ 252:	cf 93       	push	r28
+ 254:	c8 2f       	mov	r28, r24
+ 256:	eb eb       	ldi	r30, 0xBB	; 187
+ 258:	f0 e0       	ldi	r31, 0x00	; 0
+ 25a:	80 81       	ld	r24, Z
+ 25c:	81 60       	ori	r24, 0x01	; 1
+ 25e:	80 83       	st	Z, r24
+ 260:	84 e8       	ldi	r24, 0x84	; 132
+ 262:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 266:	ec eb       	ldi	r30, 0xBC	; 188
+ 268:	f0 e0       	ldi	r31, 0x00	; 0
+ 26a:	80 81       	ld	r24, Z
+ 26c:	88 23       	and	r24, r24
+ 26e:	ec f7       	brge	.-6      	; 0x26a <_Z7lcd_dwrc+0x18>
+ 270:	eb eb       	ldi	r30, 0xBB	; 187
+ 272:	f0 e0       	ldi	r31, 0x00	; 0
+ 274:	80 81       	ld	r24, Z
+ 276:	8f 70       	andi	r24, 0x0F	; 15
+ 278:	80 83       	st	Z, r24
+ 27a:	84 e8       	ldi	r24, 0x84	; 132
+ 27c:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 280:	ec eb       	ldi	r30, 0xBC	; 188
+ 282:	f0 e0       	ldi	r31, 0x00	; 0
+ 284:	80 81       	ld	r24, Z
+ 286:	88 23       	and	r24, r24
+ 288:	ec f7       	brge	.-6      	; 0x284 <_Z7lcd_dwrc+0x32>
+ 28a:	eb eb       	ldi	r30, 0xBB	; 187
+ 28c:	f0 e0       	ldi	r31, 0x00	; 0
+ 28e:	80 81       	ld	r24, Z
+ 290:	9c 2f       	mov	r25, r28
+ 292:	90 7f       	andi	r25, 0xF0	; 240
+ 294:	89 2b       	or	r24, r25
+ 296:	80 83       	st	Z, r24
+ 298:	84 e8       	ldi	r24, 0x84	; 132
+ 29a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 29e:	ec eb       	ldi	r30, 0xBC	; 188
+ 2a0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2a2:	80 81       	ld	r24, Z
+ 2a4:	88 23       	and	r24, r24
+ 2a6:	ec f7       	brge	.-6      	; 0x2a2 <_Z7lcd_dwrc+0x50>
+ 2a8:	0e 94 77 00 	call	0xee	; 0xee <_Z6togglev>
+ 2ac:	eb eb       	ldi	r30, 0xBB	; 187
+ 2ae:	f0 e0       	ldi	r31, 0x00	; 0
+ 2b0:	80 81       	ld	r24, Z
+ 2b2:	8f 70       	andi	r24, 0x0F	; 15
+ 2b4:	80 83       	st	Z, r24
+ 2b6:	84 e8       	ldi	r24, 0x84	; 132
+ 2b8:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 2bc:	ec eb       	ldi	r30, 0xBC	; 188
+ 2be:	f0 e0       	ldi	r31, 0x00	; 0
+ 2c0:	80 81       	ld	r24, Z
+ 2c2:	88 23       	and	r24, r24
+ 2c4:	ec f7       	brge	.-6      	; 0x2c0 <_Z7lcd_dwrc+0x6e>
+ 2c6:	eb eb       	ldi	r30, 0xBB	; 187
+ 2c8:	f0 e0       	ldi	r31, 0x00	; 0
+ 2ca:	20 81       	ld	r18, Z
+ 2cc:	30 e1       	ldi	r19, 0x10	; 16
+ 2ce:	c3 9f       	mul	r28, r19
+ 2d0:	c0 01       	movw	r24, r0
+ 2d2:	11 24       	eor	r1, r1
+ 2d4:	82 2b       	or	r24, r18
+ 2d6:	80 83       	st	Z, r24
+ 2d8:	84 e8       	ldi	r24, 0x84	; 132
+ 2da:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 2de:	ec eb       	ldi	r30, 0xBC	; 188
+ 2e0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e2:	80 81       	ld	r24, Z
+ 2e4:	88 23       	and	r24, r24
+ 2e6:	ec f7       	brge	.-6      	; 0x2e2 <_Z7lcd_dwrc+0x90>
+ 2e8:	0e 94 77 00 	call	0xee	; 0xee <_Z6togglev>
+ 2ec:	cf 91       	pop	r28
+ 2ee:	08 95       	ret
+
+000002f0 <_Z7lcd_msgPc>:
+ 2f0:	cf 93       	push	r28
+ 2f2:	df 93       	push	r29
+ 2f4:	ec 01       	movw	r28, r24
+ 2f6:	88 81       	ld	r24, Y
+ 2f8:	88 23       	and	r24, r24
+ 2fa:	31 f0       	breq	.+12     	; 0x308 <_Z7lcd_msgPc+0x18>
+ 2fc:	21 96       	adiw	r28, 0x01	; 1
+ 2fe:	0e 94 29 01 	call	0x252	; 0x252 <_Z7lcd_dwrc>
+ 302:	89 91       	ld	r24, Y+
+ 304:	81 11       	cpse	r24, r1
+ 306:	fb cf       	rjmp	.-10     	; 0x2fe <_Z7lcd_msgPc+0xe>
+ 308:	df 91       	pop	r29
+ 30a:	cf 91       	pop	r28
+ 30c:	08 95       	ret
+
+0000030e <_Z10USART_Initj>:
+#define Slot_2_LED_PIN PIND6  // Slot 2 is occupied or not
+#define Gate_LED_PIN PIND5  // Slot 2 is occupied or not
+
+void USART_Init(unsigned int ubrr) {
+	// Set baud rate
+	UBRR0H = (unsigned char)(ubrr >> 8);
+ 30e:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__DATA_REGION_ORIGIN__+0x65>
+	UBRR0L = (unsigned char)ubrr;
+ 312:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
+	
+	// Enable receiver and transmitter
+	UCSR0B = (1 << RXEN0) | (1 << TXEN0);
+ 316:	88 e1       	ldi	r24, 0x18	; 24
+ 318:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__DATA_REGION_ORIGIN__+0x61>
+	
+	// Set frame format: 8 data bits, 1 stop bit
+	UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
+ 31c:	86 e0       	ldi	r24, 0x06	; 6
+ 31e:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__DATA_REGION_ORIGIN__+0x62>
+ 322:	08 95       	ret
+
+00000324 <_Z14USART_Transmith>:
+}
+
+void USART_Transmit(unsigned char data) {
+	// Wait for empty transmit buffer
+	while (!(UCSR0A & (1 << UDRE0)));
+ 324:	e0 ec       	ldi	r30, 0xC0	; 192
+ 326:	f0 e0       	ldi	r31, 0x00	; 0
+ 328:	90 81       	ld	r25, Z
+ 32a:	95 ff       	sbrs	r25, 5
+ 32c:	fd cf       	rjmp	.-6      	; 0x328 <_Z14USART_Transmith+0x4>
+
+	// Put data into buffer, sends the data
+	UDR0 = data;
+ 32e:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+ 332:	08 95       	ret
+
+00000334 <main>:
+}
+
+int main(void)
+{
+ 334:	cf 93       	push	r28
+ 336:	df 93       	push	r29
+ 338:	cd b7       	in	r28, 0x3d	; 61
+ 33a:	de b7       	in	r29, 0x3e	; 62
+ 33c:	c8 54       	subi	r28, 0x48	; 72
+ 33e:	d1 09       	sbc	r29, r1
+ 340:	0f b6       	in	r0, 0x3f	; 63
+ 342:	f8 94       	cli
+ 344:	de bf       	out	0x3e, r29	; 62
+ 346:	0f be       	out	0x3f, r0	; 63
+ 348:	cd bf       	out	0x3d, r28	; 61
+		USART_Init(UBRR_VAL);
+ 34a:	87 e6       	ldi	r24, 0x67	; 103
+ 34c:	90 e0       	ldi	r25, 0x00	; 0
+ 34e:	0e 94 87 01 	call	0x30e	; 0x30e <_Z10USART_Initj>
+		// Set LED pins as outputs
+		DDRD |= (1 << Slot_1_LED_PIN) | (1 << Slot_2_LED_PIN) | (1 << Gate_LED_PIN);
+ 352:	8a b1       	in	r24, 0x0a	; 10
+ 354:	80 6e       	ori	r24, 0xE0	; 224
+ 356:	8a b9       	out	0x0a, r24	; 10
+
+		// Set IR sensor pins as inputs
+		PORTB &= 0B11011111; // Slot 1 Sensor
+ 358:	2d 98       	cbi	0x05, 5	; 5
+		PORTB &= 0B11101111; // Slot 2 Sensor
+ 35a:	2c 98       	cbi	0x05, 4	; 5
+		PORTB &= 0B11111101; // Entrance Sensor
+ 35c:	29 98       	cbi	0x05, 1	; 5
+		PORTB &= 0B11111110; // Exit Sensor
+ 35e:	28 98       	cbi	0x05, 0	; 5
+	
+	
+	i2c_init();
+ 360:	0e 94 4b 00 	call	0x96	; 0x96 <_Z8i2c_initv>
+	i2c_start();
+ 364:	0e 94 54 00 	call	0xa8	; 0xa8 <_Z9i2c_startv>
+	i2c_write(0x70); // Set the correct address of the I2C module
+ 368:	80 e7       	ldi	r24, 0x70	; 112
+ 36a:	0e 94 5d 00 	call	0xba	; 0xba <_Z9i2c_writec>
+	lcd_init();
+ 36e:	0e 94 10 01 	call	0x220	; 0x220 <_Z8lcd_initv>
+	
+
+	char message1[] = "Slot 1 avalible";
+ 372:	80 e1       	ldi	r24, 0x10	; 16
+ 374:	e0 e0       	ldi	r30, 0x00	; 0
+ 376:	f1 e0       	ldi	r31, 0x01	; 1
+ 378:	de 01       	movw	r26, r28
+ 37a:	11 96       	adiw	r26, 0x01	; 1
+ 37c:	01 90       	ld	r0, Z+
+ 37e:	0d 92       	st	X+, r0
+ 380:	8a 95       	dec	r24
+ 382:	e1 f7       	brne	.-8      	; 0x37c <main+0x48>
+	char message2[] = "Slot 2 avalible";
+ 384:	80 e1       	ldi	r24, 0x10	; 16
+ 386:	e0 e1       	ldi	r30, 0x10	; 16
+ 388:	f1 e0       	ldi	r31, 0x01	; 1
+ 38a:	de 01       	movw	r26, r28
+ 38c:	51 96       	adiw	r26, 0x11	; 17
+ 38e:	01 90       	ld	r0, Z+
+ 390:	0d 92       	st	X+, r0
+ 392:	8a 95       	dec	r24
+ 394:	e1 f7       	brne	.-8      	; 0x38e <main+0x5a>
+	char message3[] = "Slot 1 Not avalible";
+ 396:	84 e1       	ldi	r24, 0x14	; 20
+ 398:	e0 e2       	ldi	r30, 0x20	; 32
+ 39a:	f1 e0       	ldi	r31, 0x01	; 1
+ 39c:	de 01       	movw	r26, r28
+ 39e:	91 96       	adiw	r26, 0x21	; 33
+ 3a0:	01 90       	ld	r0, Z+
+ 3a2:	0d 92       	st	X+, r0
+ 3a4:	8a 95       	dec	r24
+ 3a6:	e1 f7       	brne	.-8      	; 0x3a0 <main+0x6c>
+	char message4[] = "Slot 2 Not avalible";
+ 3a8:	84 e1       	ldi	r24, 0x14	; 20
+ 3aa:	e4 e3       	ldi	r30, 0x34	; 52
+ 3ac:	f1 e0       	ldi	r31, 0x01	; 1
+ 3ae:	de 01       	movw	r26, r28
+ 3b0:	d5 96       	adiw	r26, 0x35	; 53
+ 3b2:	01 90       	ld	r0, Z+
+ 3b4:	0d 92       	st	X+, r0
+ 3b6:	8a 95       	dec	r24
+ 3b8:	e1 f7       	brne	.-8      	; 0x3b2 <main+0x7e>
+	
+	
+		while (1)
+		{
+			// Check the state of Slot_1_IR and turn on Slot_1_LED_PIN if it's high (1)
+			if (PINB & (1 << Slot_1_IR))
+ 3ba:	1d 9b       	sbis	0x03, 5	; 3
+ 3bc:	0c c0       	rjmp	.+24     	; 0x3d6 <main+0xa2>
+			{
+				PORTD |= (1 << Slot_1_LED_PIN);  // Turn on Slot_1_LED_PIN
+ 3be:	5f 9a       	sbi	0x0b, 7	; 11
+				USART_Transmit('1'); // Send '1' to indicate occupied
+ 3c0:	81 e3       	ldi	r24, 0x31	; 49
+ 3c2:	0e 94 92 01 	call	0x324	; 0x324 <_Z14USART_Transmith>
+				lcd_cmd(0x80);
+ 3c6:	80 e8       	ldi	r24, 0x80	; 128
+ 3c8:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+				lcd_msg(message1);
+ 3cc:	ce 01       	movw	r24, r28
+ 3ce:	01 96       	adiw	r24, 0x01	; 1
+ 3d0:	0e 94 78 01 	call	0x2f0	; 0x2f0 <_Z7lcd_msgPc>
+ 3d4:	0b c0       	rjmp	.+22     	; 0x3ec <main+0xb8>
+			}
+			else
+			{
+				PORTD &= ~(1 << Slot_1_LED_PIN); // Turn off Slot_1_LED_PIN
+ 3d6:	5f 98       	cbi	0x0b, 7	; 11
+				USART_Transmit('0'); // Send '0' to indicate unoccupied
+ 3d8:	80 e3       	ldi	r24, 0x30	; 48
+ 3da:	0e 94 92 01 	call	0x324	; 0x324 <_Z14USART_Transmith>
+				lcd_cmd(0x80);
+ 3de:	80 e8       	ldi	r24, 0x80	; 128
+ 3e0:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+				lcd_msg(message3);
+ 3e4:	ce 01       	movw	r24, r28
+ 3e6:	81 96       	adiw	r24, 0x21	; 33
+ 3e8:	0e 94 78 01 	call	0x2f0	; 0x2f0 <_Z7lcd_msgPc>
+			}
+
+			// Check the state of Slot_2_IR and turn on Slot_2_LED_PIN if it's high (1)
+			if (PINB & (1 << Slot_2_IR))
+ 3ec:	1c 9b       	sbis	0x03, 4	; 3
+ 3ee:	0c c0       	rjmp	.+24     	; 0x408 <__LOCK_REGION_LENGTH__+0x8>
+			{
+				PORTD |= (1 << Slot_2_LED_PIN);  // Turn on Slot_2_LED_PIN
+ 3f0:	5e 9a       	sbi	0x0b, 6	; 11
+				USART_Transmit('2'); // Send '2' to indicate occupied
+ 3f2:	82 e3       	ldi	r24, 0x32	; 50
+ 3f4:	0e 94 92 01 	call	0x324	; 0x324 <_Z14USART_Transmith>
+				lcd_cmd(0xC3);
+ 3f8:	83 ec       	ldi	r24, 0xC3	; 195
+ 3fa:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+				lcd_msg(message2);
+ 3fe:	ce 01       	movw	r24, r28
+ 400:	41 96       	adiw	r24, 0x11	; 17
+ 402:	0e 94 78 01 	call	0x2f0	; 0x2f0 <_Z7lcd_msgPc>
+ 406:	0b c0       	rjmp	.+22     	; 0x41e <__LOCK_REGION_LENGTH__+0x1e>
+			}
+			else
+			{
+				PORTD &= ~(1 << Slot_2_LED_PIN); // Turn off Slot_2_LED_PIN
+ 408:	5e 98       	cbi	0x0b, 6	; 11
+				USART_Transmit('0'); // Send '0' to indicate unoccupied
+ 40a:	80 e3       	ldi	r24, 0x30	; 48
+ 40c:	0e 94 92 01 	call	0x324	; 0x324 <_Z14USART_Transmith>
+				lcd_cmd(0xC3);
+ 410:	83 ec       	ldi	r24, 0xC3	; 195
+ 412:	0e 94 c1 00 	call	0x182	; 0x182 <_Z7lcd_cmdc>
+				lcd_msg(message4);
+ 416:	ce 01       	movw	r24, r28
+ 418:	c5 96       	adiw	r24, 0x35	; 53
+ 41a:	0e 94 78 01 	call	0x2f0	; 0x2f0 <_Z7lcd_msgPc>
+			}
+			
+
+			
+			if ( (PINB & (1 << Entrance_IR)) || (PINB & (1 << Exit_IR)) )
+ 41e:	19 99       	sbic	0x03, 1	; 3
+ 420:	02 c0       	rjmp	.+4      	; 0x426 <__LOCK_REGION_LENGTH__+0x26>
+ 422:	18 9b       	sbis	0x03, 0	; 3
+ 424:	05 c0       	rjmp	.+10     	; 0x430 <__LOCK_REGION_LENGTH__+0x30>
+			{
+				PORTD |= (1 << Gate_LED_PIN);  // Turn on Gate LEDcPIN
+ 426:	5d 9a       	sbi	0x0b, 5	; 11
+				USART_Transmit('3'); // Send '0' to indicate unoccupied
+ 428:	83 e3       	ldi	r24, 0x33	; 51
+ 42a:	0e 94 92 01 	call	0x324	; 0x324 <_Z14USART_Transmith>
+ 42e:	04 c0       	rjmp	.+8      	; 0x438 <__LOCK_REGION_LENGTH__+0x38>
+			}
+			else
+			{
+				PORTD &= ~(1 << Gate_LED_PIN); // Turn Gate LED PIN
+ 430:	5d 98       	cbi	0x0b, 5	; 11
+				USART_Transmit('0'); // Send '0' to indicate unoccupied
+ 432:	80 e3       	ldi	r24, 0x30	; 48
+ 434:	0e 94 92 01 	call	0x324	; 0x324 <_Z14USART_Transmith>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 438:	2f ef       	ldi	r18, 0xFF	; 255
+ 43a:	83 ec       	ldi	r24, 0xC3	; 195
+ 43c:	99 e0       	ldi	r25, 0x09	; 9
+ 43e:	21 50       	subi	r18, 0x01	; 1
+ 440:	80 40       	sbci	r24, 0x00	; 0
+ 442:	90 40       	sbci	r25, 0x00	; 0
+ 444:	e1 f7       	brne	.-8      	; 0x43e <__LOCK_REGION_LENGTH__+0x3e>
+ 446:	00 c0       	rjmp	.+0      	; 0x448 <__LOCK_REGION_LENGTH__+0x48>
+ 448:	00 00       	nop
+ 44a:	b7 cf       	rjmp	.-146    	; 0x3ba <main+0x86>
+
+0000044c <_exit>:
+ 44c:	f8 94       	cli
+
+0000044e <__stop_program>:
+ 44e:	ff cf       	rjmp	.-2      	; 0x44e <__stop_program>
